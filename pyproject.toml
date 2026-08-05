@@ -1,0 +1,78 @@
+[build-system]
+build-backend = "uv_build"
+requires = [ "uv-build>=0.11.2,<0.12" ]
+
+[project]
+name = "eodc-geozarr"
+version = "0.1.0"
+description = "GeoZarr convention attribute builders: a pyproj bridge over zarr-cm."
+readme = "README.md"
+license = { file = "LICENSE.txt" }
+authors = [ { name = "eodc", email = "office@eodc.eu" } ]
+requires-python = ">=3.12"
+classifiers = [
+  "Intended Audience :: Science/Research",
+  "Natural Language :: English",
+  "Operating System :: POSIX",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Scientific/Engineering",
+  "Topic :: Scientific/Engineering :: GIS",
+  "Topic :: Software Development :: Libraries",
+]
+dependencies = [
+  "pyproj>=3.6",
+  # Deliberately unbounded: conventions are written at zarr-cm's latest
+  # revision.  ``tests/test_conventions.py`` asserts which revisions those are,
+  # so a new one surfaces as a failing test.  See ``_conventions.py``.
+  "zarr-cm>=0.4",
+]
+[project.urls]
+Repository = "https://github.com/eodcgmbh/eodc-geozarr"
+
+[dependency-groups]
+dev = [
+  "pytest>=9.0.1",
+  "pytest-cov>=7",
+  "ruff>=0.14.5",
+  "ty>=0.0.8",
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+docstring-code-format = false
+docstring-code-line-length = "dynamic"
+[tool.ruff.lint]
+select = [ "ALL" ]
+ignore = [
+  "COM812",  # missing-trailing-comma (may conflict with ruff formatter)
+  "D203",    # incorrect-blank-line-before-class (conflicts with D211)
+  "D213",    # multi-line-summary-second-line (conflicts with D212)
+  "PLR0913",
+  "ANN401",  # allow Any
+  "CPY001",  # no copyright headers in this codebase
+]
+fixable = [ "ALL" ]
+unfixable = []
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = [ "E402" ]
+"**/{tests}/*" = [ "ANN001", "ANN201", "D", "E402", "INP001", "PLR2004", "S101" ]
+
+[tool.pyproject-fmt]
+table_format = "long"
+collapse_tables = [ "project.authors" ]
+
+[tool.pytest.ini_options]
+addopts = "--cov=eodc_geozarr --cov-report term-missing -rsx --verbose --color=yes"
+
+[tool.coverage.run]
+relative_files = true
+
+[tool.ty.rules]
+possibly-missing-attribute = "ignore"
+unresolved-attribute = "ignore"

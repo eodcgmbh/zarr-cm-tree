@@ -38,7 +38,7 @@ def build_multiscales_attrs(
     -------
     dict
         ``{"multiscales": {...}}``.  No ``zarr_conventions`` entry (see
-        :func:`~eodc_geozarr.build_zarr_conventions`).
+        :func:`~zarr_cm_tree.build_zarr_conventions`).
 
     Raises
     ------

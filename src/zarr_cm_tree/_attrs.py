@@ -4,14 +4,14 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any
 
-from eodc_geozarr._conventions import build_zarr_conventions
-from eodc_geozarr._multiscales import build_multiscales_attrs
+from zarr_cm_tree._conventions import build_zarr_conventions
+from zarr_cm_tree._multiscales import build_multiscales_attrs
 
 if TYPE_CHECKING:
     from collections.abc import Mapping, Sequence
 
-    from eodc_geozarr._proj import GeoZarrProj
-    from eodc_geozarr._spatial import GeoZarrSpatial
+    from zarr_cm_tree._proj import GeoZarrProj
+    from zarr_cm_tree._spatial import GeoZarrSpatial
 
 __all__ = ["geozarr_attrs"]
 

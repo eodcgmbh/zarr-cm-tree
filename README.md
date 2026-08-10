@@ -1,4 +1,4 @@
-# eodc-geozarr
+# zarr-cm-tree
 
 GeoZarr convention attribute builders — an opinionated bridge between
 [pyproj](https://pyproj4.github.io/pyproj/) and
@@ -9,7 +9,7 @@ Zarr v3 group or array for the GeoZarr conventions `proj:`, `spatial:` and
 `multiscales`, plus an interim `dggs:` placeholder.
 
 ```bash
-uv add eodc-geozarr
+uv add zarr-cm-tree
 ```
 
 ## Scope
@@ -35,7 +35,7 @@ Everything returned is a plain `dict`, never a model, so it merges straight into
 ## Usage
 
 ```python
-import eodc_geozarr as gz
+import zarr_cm_tree as gz
 
 crs = gz.GeoZarrProj.from_user_input("EPSG:27704")  # Equi7Grid EU
 spatial = gz.GeoZarrSpatial(

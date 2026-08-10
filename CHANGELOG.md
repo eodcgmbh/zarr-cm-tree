@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 <!-- insertion marker -->
 
 
-## [0.1.0](https://github.com/eodcgmbh/eodc-geozarr/releases/tag/0.1.0) - 2026-08-06
+## [0.1.0](https://github.com/eodcgmbh/zarr-cm-tree/releases/tag/0.1.0) - 2026-08-06
 
 ### Summary
 

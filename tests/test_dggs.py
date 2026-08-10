@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from eodc_geozarr import DGGS_NAMESPACE, build_dggs_attrs
+from zarr_cm_tree import DGGS_NAMESPACE, build_dggs_attrs
 
 
 class TestBuildDggsAttrs:

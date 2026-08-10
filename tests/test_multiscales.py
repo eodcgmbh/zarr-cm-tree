@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from eodc_geozarr import build_multiscales_attrs
+from zarr_cm_tree import build_multiscales_attrs
 
 
 class TestBuildMultiscalesAttrs:

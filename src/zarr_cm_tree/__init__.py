@@ -24,8 +24,8 @@ References
 
 from __future__ import annotations
 
-from eodc_geozarr._attrs import geozarr_attrs
-from eodc_geozarr._conventions import (
+from zarr_cm_tree._attrs import geozarr_attrs
+from zarr_cm_tree._conventions import (
     MULTISCALES_UUID,
     PROJ_UUID,
     SPATIAL_UUID,
@@ -34,14 +34,14 @@ from eodc_geozarr._conventions import (
     current_revisions,
     merge_attrs,
 )
-from eodc_geozarr._dggs import DGGS_NAMESPACE, build_dggs_attrs
-from eodc_geozarr._multiscales import (
+from zarr_cm_tree._dggs import DGGS_NAMESPACE, build_dggs_attrs
+from zarr_cm_tree._multiscales import (
     LayoutObject,
     Transform,
     build_multiscales_attrs,
 )
-from eodc_geozarr._proj import GeoZarrProj, GeoZarrProjFormat, build_proj_attrs
-from eodc_geozarr._spatial import GeoZarrSpatial, build_spatial_attrs
+from zarr_cm_tree._proj import GeoZarrProj, GeoZarrProjFormat, build_proj_attrs
+from zarr_cm_tree._spatial import GeoZarrSpatial, build_spatial_attrs
 
 __all__ = [
     "DGGS_NAMESPACE",

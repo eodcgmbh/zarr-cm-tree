@@ -3,7 +3,7 @@ build-backend = "uv_build"
 requires = [ "uv-build>=0.11.2,<0.12" ]
 
 [project]
-name = "eodc-geozarr"
+name = "zarr-cm-tree"
 version = "0.1.0"
 description = "GeoZarr convention attribute builders: a pyproj bridge over zarr-cm."
 readme = "README.md"
@@ -30,7 +30,7 @@ dependencies = [
   "zarr-cm>=0.4",
 ]
 [project.urls]
-Repository = "https://github.com/eodcgmbh/eodc-geozarr"
+Repository = "https://github.com/eodcgmbh/zarr-cm-tree"
 
 [dependency-groups]
 dev = [
@@ -68,7 +68,7 @@ table_format = "long"
 collapse_tables = [ "project.authors" ]
 
 [tool.pytest.ini_options]
-addopts = "--cov=eodc_geozarr --cov-report term-missing -rsx --verbose --color=yes"
+addopts = "--cov=zarr_cm_tree --cov-report term-missing -rsx --verbose --color=yes"
 
 [tool.coverage.run]
 relative_files = true

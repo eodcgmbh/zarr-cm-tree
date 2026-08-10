@@ -38,7 +38,7 @@ def build_proj_attrs(
     dict
         ``{}`` if all arguments are ``None``; otherwise one of ``proj:code``,
         ``proj:wkt2``, or ``proj:projjson``.  No ``zarr_conventions`` entry (see
-        :func:`~eodc_geozarr.build_zarr_conventions`).  Prefer
+        :func:`~zarr_cm_tree.build_zarr_conventions`).  Prefer
         :class:`GeoZarrProj` for validated inputs.
 
     """

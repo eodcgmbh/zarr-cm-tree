@@ -7,7 +7,7 @@ from zarr_cm import multiscales as zcm_multiscales
 from zarr_cm import proj as zcm_proj
 from zarr_cm import spatial as zcm_spatial
 
-from eodc_geozarr import (
+from zarr_cm_tree import (
     MULTISCALES_UUID,
     PROJ_UUID,
     SPATIAL_UUID,

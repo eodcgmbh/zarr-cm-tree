@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pyproj
 
-from eodc_geozarr import GeoZarrProj, GeoZarrProjFormat, build_proj_attrs
+from zarr_cm_tree import GeoZarrProj, GeoZarrProjFormat, build_proj_attrs
 
 
 class TestBuildProjAttrs:

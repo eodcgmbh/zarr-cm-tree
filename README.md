@@ -1,4 +1,4 @@
-# eodc-geozarr
+# zarr-cm-tree
 
 GeoZarr convention attribute builders — an opinionated bridge between
 [pyproj](https://pyproj4.github.io/pyproj/) and
@@ -8,11 +8,8 @@ It produces the plain attribute dicts that make up the `attributes` block of a
 Zarr v3 group or array for the GeoZarr conventions `proj:`, `spatial:` and
 `multiscales`, plus an interim `dggs:` placeholder.
 
-Extracted from `cube-factory` so that datacube products can write GeoZarr
-metadata without depending on the whole Icechunk/dask/cubed stack.
-
 ```bash
-uv add "eodc-geozarr @ git+https://github.com/eodcgmbh/eodc-geozarr.git@main"
+uv add zarr-cm-tree
 ```
 
 ## Scope
@@ -38,7 +35,7 @@ Everything returned is a plain `dict`, never a model, so it merges straight into
 ## Usage
 
 ```python
-import eodc_geozarr as gz
+import zarr_cm_tree as gz
 
 crs = gz.GeoZarrProj.from_user_input("EPSG:27704")  # Equi7Grid EU
 spatial = gz.GeoZarrSpatial(
@@ -97,26 +94,6 @@ new revision surfaces as one failing test rather than silently changing what get
 written. When it fails: read what changed, confirm the new attributes are what
 you want, update `EXPECTED_REVISIONS`. Stricter validation would fail loudly at
 ingest anyway; the test is there for the revisions that change quietly.
-
-## Not in this package
-
-- **`cf_time_attrs`** — CF, not GeoZarr. It stays in cube-factory.
-- **`combine_geozarr_attrs`** — dropped in the extraction; it had no callers, and
-  `zarr_cm.create_many` already does the job.
-
-## Renames from `cube_factory._geozarr`
-
-The convention was renamed `geo-proj` → `proj` upstream; this package follows it.
-
-| Old | New |
-|---|---|
-| `build_geo_proj_attrs` | `build_proj_attrs` |
-| `GeoZarrProj.to_geo_proj_attrs` | `GeoZarrProj.to_proj_attrs` |
-| `GEO_PROJ_UUID` | `PROJ_UUID` |
-
-Everything else keeps its name. Emitted attributes are unchanged — verified
-identical across 66 builder cases and 11 `ZarrGroup` / `ZarrMultiscaleGroup`
-configurations, including the `zarr_conventions` registry entries.
 
 ## Known issues
 

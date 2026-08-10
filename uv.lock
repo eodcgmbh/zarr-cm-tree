@@ -90,37 +90,6 @@ wheels = [
 ]
 
 [[package]]
-name = "eodc-geozarr"
-version = "0.1.0"
-source = { editable = "." }
-dependencies = [
-    { name = "pyproj" },
-    { name = "zarr-cm" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "pytest" },
-    { name = "pytest-cov" },
-    { name = "ruff" },
-    { name = "ty" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "pyproj", specifier = ">=3.6" },
-    { name = "zarr-cm", specifier = ">=0.4" },
-]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "pytest", specifier = ">=9.0.1" },
-    { name = "pytest-cov", specifier = ">=7" },
-    { name = "ruff", specifier = ">=0.14.5" },
-    { name = "ty", specifier = ">=0.0.8" },
-]
-
-[[package]]
 name = "iniconfig"
 version = "2.3.0"
 source = { registry = "https://pypi.org/simple" }
@@ -311,4 +280,35 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/f9/c6/51d38cafa07bdf725c77a67719647eea43255f925fda062b40799bbb361d/zarr_cm-0.4.1.tar.gz", hash = "sha256:693d24ca2b8e3a7230e1ed448c2c57f98833b81e5899607b6cb4a7ac31f94002", size = 50839, upload-time = "2026-06-21T19:20:36.277Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/e8/14/3de8976647909b2f6764b8d0c9add0a961667ef4ab46f3f99e12d7a522fa/zarr_cm-0.4.1-py3-none-any.whl", hash = "sha256:2c7f36383af2e6f75eb274a797a13154fd5c5827390de7c79294dfeb9f0543ee", size = 33005, upload-time = "2026-06-21T19:20:35.05Z" },
+]
+
+[[package]]
+name = "zarr-cm-tree"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "pyproj" },
+    { name = "zarr-cm" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "pytest" },
+    { name = "pytest-cov" },
+    { name = "ruff" },
+    { name = "ty" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "pyproj", specifier = ">=3.6" },
+    { name = "zarr-cm", specifier = ">=0.4" },
+]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "pytest", specifier = ">=9.0.1" },
+    { name = "pytest-cov", specifier = ">=7" },
+    { name = "ruff", specifier = ">=0.14.5" },
+    { name = "ty", specifier = ">=0.0.8" },
 ]

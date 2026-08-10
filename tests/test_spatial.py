@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from eodc_geozarr import GeoZarrSpatial, build_spatial_attrs
+from zarr_cm_tree import GeoZarrSpatial, build_spatial_attrs
 
 
 class TestGeoZarrSpatial:

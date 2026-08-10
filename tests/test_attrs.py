@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from eodc_geozarr import (
+from zarr_cm_tree import (
     MULTISCALES_UUID,
     PROJ_UUID,
     SPATIAL_UUID,

@@ -22,7 +22,8 @@ deliberately does not:
   how to serialise it — authority code when one exists, WKT2 otherwise — and
   hands rioxarray a matching CRS string via `rio_input()`.
 - **Domain defaults for gridded data.** `GeoZarrSpatial` defaults to `("y", "x")`
-  dims and `"pixel"` registration, and infers `transform_type="affine"`.
+  dims and `"pixel"` registration, and infers `transform_type="affine"` when a
+  `transform` is given (`transform` is optional: omit it for dims-only attrs).
 - **Layout rules the schema does not encode**, e.g. `derived_from` requires a
   `transform`.
 - **`geozarr_attrs`**, which emits several conventions at once together with a

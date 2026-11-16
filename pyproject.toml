@@ -4,7 +4,7 @@ requires = [ "uv-build>=0.11.2,<0.12" ]
 
 [project]
 name = "zarr-cm-tree"
-version = "0.1.0"
+version = "0.2.0"
 description = "GeoZarr convention attribute builders: a pyproj bridge over zarr-cm."
 readme = "README.md"
 license = { file = "LICENSE.txt" }

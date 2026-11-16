@@ -35,6 +35,21 @@ class TestGeoZarrSpatial:
         )
         assert spatial.to_attrs()["spatial:dimensions"] == ["latitude", "longitude"]
 
+    def test_dims_only(self):
+        attrs = GeoZarrSpatial(dims=("y", "x"), registration="pixel").to_attrs()
+        assert attrs == {
+            "spatial:dimensions": ["y", "x"],
+            "spatial:registration": "pixel",
+        }
+
+    def test_positional_args_rejected(self):
+        with pytest.raises(TypeError):
+            GeoZarrSpatial(("y", "x"))  # ty: ignore[too-many-positional-arguments]
+
+    def test_affine_without_transform_raises(self):
+        with pytest.raises(ValueError, match="requires spatial:transform"):
+            GeoZarrSpatial(transform_type="affine").to_attrs()
+
 
 class TestBuildSpatialAttrs:
     def test_minimal_dimensions_only(self):
@@ -67,6 +82,15 @@ class TestBuildSpatialAttrs:
 
     def test_no_transform_type_without_transform(self):
         assert "spatial:transform_type" not in build_spatial_attrs(["y", "x"])
+
+    def test_affine_without_transform_raises(self):
+        with pytest.raises(ValueError, match="requires spatial:transform"):
+            build_spatial_attrs(["y", "x"], transform_type="affine")
+
+    def test_non_affine_without_transform(self):
+        attrs = build_spatial_attrs(["y", "x"], transform_type="lookup")
+        assert attrs["spatial:transform_type"] == "lookup"
+        assert "spatial:transform" not in attrs
 
     def test_empty_dimensions_raises(self):
         with pytest.raises(ValueError, match="non-empty"):

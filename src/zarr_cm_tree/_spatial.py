@@ -16,16 +16,17 @@ __all__ = [
 ]
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True, slots=True, kw_only=True)
 class GeoZarrSpatial:
     """GeoZarr ``spatial:`` metadata for a gridded dataset.
 
     Parameters
     ----------
-    transform : tuple[float, ...]
-        6- (or 9-) element affine mapping ``(col, row) -> (X, Y)``.
     dims : tuple[str, ...], optional
         Spatial dimension names in storage order.  Default ``("y", "x")``.
+    transform : tuple[float, ...] or None, optional
+        6- (or 9-) element affine mapping ``(col, row) -> (X, Y)``.  Omit for
+        dims-only attrs.
     shape : tuple[int, ...] or None, optional
         Pixel shape along ``dims``.
     bbox : tuple[float, ...] or None, optional
@@ -37,8 +38,8 @@ class GeoZarrSpatial:
 
     """
 
-    transform: tuple[float, ...]
     dims: tuple[str, ...] = ("y", "x")
+    transform: tuple[float, ...] | None = None
     shape: tuple[int, ...] | None = None
     bbox: tuple[float, ...] | None = None
     registration: str = "pixel"
@@ -91,11 +92,15 @@ def build_spatial_attrs(
     Raises
     ------
     ValueError
-        If *dimensions* is empty.
+        If *dimensions* is empty, or *transform_type* is ``"affine"`` without
+        *transform*.
 
     """
     if not dimensions:
         msg = "spatial:dimensions must be non-empty"
+        raise ValueError(msg)
+    if transform_type == "affine" and transform is None:
+        msg = "spatial:transform_type 'affine' requires spatial:transform"
         raise ValueError(msg)
     if transform is not None and transform_type is None:
         transform_type = "affine"

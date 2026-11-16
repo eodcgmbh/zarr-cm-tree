@@ -42,6 +42,13 @@ class TestGeozarrAttrs:
         assert attrs["spatial:transform_type"] == "affine"
         assert uuids(attrs) == [SPATIAL_UUID]
 
+    def test_spatial_dims_only(self):
+        attrs = geozarr_attrs(spatial=GeoZarrSpatial())
+        assert attrs["spatial:dimensions"] == ["y", "x"]
+        assert "spatial:transform" not in attrs
+        assert "spatial:transform_type" not in attrs
+        assert uuids(attrs) == [SPATIAL_UUID]
+
     def test_multiscales_only(self):
         attrs = geozarr_attrs(multiscales=LAYOUT)
         assert attrs["multiscales"]["layout"][1]["derived_from"] == "0"
